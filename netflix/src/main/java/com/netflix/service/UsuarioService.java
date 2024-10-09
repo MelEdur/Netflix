@@ -39,4 +39,8 @@ public class UsuarioService {
             return usuario.get();
         }
     }
+
+    public Usuario traerPorId(int id){
+        return usuarioRepository.findById(id).orElseThrow();
+    }
 }

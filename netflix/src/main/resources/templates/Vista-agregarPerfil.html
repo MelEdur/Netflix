@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NETFLIX</title>
+
+</head>
+
+<body>
+<h2>Agregar nuevo perfil</h2>
+<div class="form-container">
+    <form th:action="@{/perfil/guardar}" method="post">
+        <label for="nomnre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Nombre de perfil" required>
+        <label for="kids">Perfil infantil:</label>
+        <input type="checkbox" id="kids" name="kids" th:checed="${perfil.kids}">
+
+        <button type="submit">Agregar</button>
+    </form>
+</div>
+</body>
+
+</html>

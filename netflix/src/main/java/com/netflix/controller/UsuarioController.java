@@ -22,7 +22,7 @@ public class UsuarioController {
 
     @GetMapping("/registro")
     public ModelAndView vistaRegistro(String mensaje){
-        ModelAndView modelAndView = new ModelAndView("Vista registro");
+        ModelAndView modelAndView = new ModelAndView("Vista-registro");
 
         //TRAE PLANES DE LA BD
         List<Plan> planes = planService.traerPlanes();
@@ -57,7 +57,7 @@ public class UsuarioController {
 
     @GetMapping("/login")
     public ModelAndView vistaLogIn(String mensaje){
-        ModelAndView modelAndView = new ModelAndView("Vista login");
+        ModelAndView modelAndView = new ModelAndView("Vista-login");
         modelAndView.addObject("error",mensaje);
 
         return modelAndView;
@@ -82,5 +82,10 @@ public class UsuarioController {
         }
 
         return modelAndView;
+    }
+
+    @GetMapping("")
+    public ModelAndView visitante(){
+        return new ModelAndView("Vista-visitante");
     }
 }

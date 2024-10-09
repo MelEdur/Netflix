@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" th:href="@{/Vista-login.css}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NETFLIX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <h2>Iniciar sesión</h2>
+
+    <form action="#" th:action="@{/login}" method="post">
+        <p>Usuario: <input type="email" th:name="correo" required></p>
+        <p>Contraseña: <input type="password" th:name="contrasenia" required></p>
+
+        <button type="submit">Iniciar Sesion</button>
+    </form>
+
+    <p th:if="${error}" th:text="${error}" style="color: red;"></p>
+</body>
+
+</html>
