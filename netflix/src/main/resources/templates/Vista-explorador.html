@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Explorador</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <!-- <h1>Bienvenido, <span th:text="${perfil.nombre}"></span></h1> -->
+
+    <!-- Buscador -->
+    <form action="#" th:action="@{/buscar}" method="post">
+        <input type="text" th:name="titulo" name="busqueda" placeholder="Buscar...">
+        <p>Seleccione un género
+        <select th:name="genero">
+            <option value="terror">Terror</option>
+            <option value="romance">Romance</option>
+            <option value="accion">Acción</option>
+            <option value="comedia">Comedia</option>
+            <option value="infantil">Infantil</option>
+            <option value="">Todos</option>
+        </select>
+        </p>
+        <select th:name="tipo">
+            <option value="">Todos</option>
+            <option value="serie">Series</option>
+            <option value="pelicula">Peliculas</option>
+        </select>
+        <input type="hidden" th:name="usuarioId" th:value="${usuario.idUsuario}">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- Resultados de la búsqueda -->
+     <div>
+        <ul>
+            <li th:each="contenido:${resultados}">
+                <span th:text="${contenido.titulo}"> </span>
+                <span th:text="${contenido.genero}"> </span>
+                <div th:if="${contenido instanceof T(com.netflix.entity.Serie)}">
+                    <form action="#" th:action="@{/a}" method="post">
+                        <input type="hidden" th:name="idContenido" th:value="${contenido.idContenido}">
+                        <input type="hidden" th:name="usuarioId" th:value="${usuario.idUsuario}">
+                        <button type="submit">Ver episodios</button>
+                    </form>
+                </div>
+                <div th:if="${contenido instanceof T(com.netflix.entity.Pelicula)}">
+                    <form action="#" th:action="@{/a}" method="post">
+                        <input type="hidden" th:name="idContenido" th:value="${contenido.idContenido}">
+                        <input type="hidden" th:name="usuarioId" th:value="${usuario.idUsuario}">
+                        <button type="submit">Reproducir</button>
+                    </form>
+                </div>
+            </li>
+        </ul>
+     </div>
+   
+
+    <!-- Cambio de perfil 
+    <button th:onclick="'/seleccionar-perfil'">Cambiar Perfil</button> -->
+</body>
+</html>
