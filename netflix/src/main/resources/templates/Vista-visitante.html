@@ -5,13 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NETFLIX</title>
+
+    <link rel="stylesheet" th:href="@{/Vista-visitante.css}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h2>Bienvenido</h2>
+    <h2>BIENVENIDO</h2>
 
-    <button th:onclick="'window.location.href=\'' + @{/registro} + '\''">Registrarse</button>
-    <button th:onclick="'window.location.href=\'' + @{/login} + '\''">Iniciar Sesión</button>
+    <div class="container">
+        <img src="netflix.png" width="600">
+
+
+    <div class="buttons">
+        <button th:onclick="'window.location.href=\'' + @{/registro} + '\''">Registrarse</button>
+        <button th:onclick="'window.location.href=\'' + @{/login} + '\''">Iniciar Sesión</button>
+    </div>
+    </div>
 
 </body>
 

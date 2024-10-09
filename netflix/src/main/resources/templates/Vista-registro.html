@@ -2,18 +2,23 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+    <link rel="stylesheet" th:href="@{/Vista-registro.css}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NETFLIX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <h2>Crear Usuario</h2>
+    <h2>REGISTRATE</h2>
 
     <form action="#" th:action="@{/registro}" method="post">
-        <p>Correo Electronico: <input type="email" th:name="correo" required></p>
-        <p>Contraseña: <input type="password" th:name="contrasenia" required></p>
-        <p>Metodo de pago: <input type="text" th:name="tarjeta" required></p>
+        <p>Correo Electronico <input type="email" th:name="correo" required></p>
+        <p>Contraseña <input type="password" th:name="contrasenia" required></p>
+        <p>Metodo de pago <input type="text" th:name="tarjeta" required></p>
 
         <p>Seleccione un Plan:
         <select th:name="planId">
