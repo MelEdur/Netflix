@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
@@ -80,6 +81,36 @@ public class UsuarioController {
         }
 
         return modelAndView;
+    }
+
+    @GetMapping("/modificar")
+    public ModelAndView vistaModificar(int usuarioId){
+        ModelAndView modelAndView = new ModelAndView("Vista-modificar");
+        modelAndView.addObject("usuario",usuarioService.traerPorId(usuarioId));
+
+        return modelAndView;
+    }
+
+    @PostMapping("/modificar")
+    public ModelAndView modificar(
+            @RequestParam("correo")  String correo,
+            @RequestParam("contrasenia") String contrasenia,
+            @RequestParam("tarjeta") String tarjeta,
+            @RequestParam("planId") int planId,
+            @RequestParam("usuarioId") int usuarioId
+    ){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:/explorador");
+        modelAndView.addObject("usuarioId",usuarioService
+                .actualizarUsuario(usuarioId,correo,contrasenia,tarjeta,planService.traerPorId(planId)));
+
+        return modelAndView;
+    }
+
+    @GetMapping("/baja/{id}")
+    public RedirectView eliminar(@PathVariable("id")int id){
+        usuarioService.eliminarUsuario(id);
+        return new RedirectView("/");
     }
 
     @GetMapping("")
