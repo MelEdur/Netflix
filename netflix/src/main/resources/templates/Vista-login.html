@@ -12,13 +12,13 @@
 </head>
 
 <body>
-    <h2>Iniciar sesión</h2>
+    <h2>NETFLIX</h2>
 
     <form action="#" th:action="@{/login}" method="post">
         <p>Usuario: <input type="email" th:name="correo" required></p>
         <p>Contraseña: <input type="password" th:name="contrasenia" required></p>
 
-        <button type="submit">Iniciar Sesion</button>
+        <button th:onclick="'window.location.href=\'' + @{/seleccionPerfil} + '\''">Iniciar Sesión</button>
     </form>
 
     <p th:if="${error}" th:text="${error}" style="color: red;"></p>
