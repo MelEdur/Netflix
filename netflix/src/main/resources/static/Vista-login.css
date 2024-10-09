@@ -9,13 +9,13 @@ html, body {
 /* Estilo del body */
 body {
     background-image:url(./wally.jpeg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
 }
 
 /* Estilo del título */
@@ -30,40 +30,39 @@ h2 {
 /* Estilo del formulario */
 form {
     background-color: rgb(0 0 0 / 35%);
-    width: 400px;
-    height: 300px;
-    padding: 20px;
-    border-radius: 10px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
+    width: 400px; 
+    height: 380px;
+    padding: 20px; 
+    border-radius: 10px; 
+    margin: auto; 
+    display: flex; 
+    flex-direction: column; 
     justify-content: space-between;
 }
 
-
 form input {
-    background-color: rgb(255, 255, 255, 0.05);
-    margin: 10px 0;
-    padding: 10px;
-    width: 100%;
-    border: none;
-    box-sizing: border-box;
+    background-color: rgb(255, 255, 255, 0.05); 
+    margin: 10px 0; 
+    padding: 10px; 
+    width: 100%; 
+    border: none; 
+    box-sizing: border-box; 
 }
-
-
 button {
-    padding: 10px 20px;
-    background: red;
+    padding: 10px 20px; 
+    background: red; 
     color: white;
-    border: none;
-    border-radius: 5px;
+    border: none; 
+    border-radius: 5px; 
     cursor: pointer;
     align-self: center;
+    WIDTH: -webkit-fill-available;
+    FONT-SIZE: x-large;
 }
 
-
 form p {
-    color: #979797;
-    width: 100%;
+    color: #979797; 
+    width: 100%; 
     text-align: left;
+    font-size:30px;
 }

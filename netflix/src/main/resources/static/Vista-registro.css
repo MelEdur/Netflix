@@ -1,0 +1,87 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #1a1818;
+}
+
+h2 {
+    color: red;
+    font-family: 'Bebas Neue';
+    font-size: 70px;
+    margin-bottom: 8px;
+
+}
+
+form {
+    width: 600px;
+    height: 500px;
+    padding: 20px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: #ff0000 1px solid;
+}
+
+
+form input {
+    background-color: rgb(255, 255, 255, 0.05);
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+input{
+    font-family: monospace;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+
+button {
+    padding: 10px 20px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: center;
+    font-family: monospace;
+    font-size: 16px;
+}
+
+
+form p {
+    color: #979797;
+    width: 100%;
+    text-align: left;
+    font-family: monospace;
+    font-size: 18px;
+}
+
+select {
+    width: 100px;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+    font-size: 17px;
+    cursor: pointer;
+    font-family: monospace;
+}
+
+
+
+option {
+    background-color: white;
+    color: black;
+}
