@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -35,17 +36,17 @@ public class ExploradorController {
 
     @PostMapping("/buscar")
     public ModelAndView buscarContenido(
-//            @RequestParam("titulo") String titulo,
-//            @RequestParam("genero") String genero,
-//            @RequestParam("tipo") String tipo,
-//            @RequestParam("usuarioId") int usuarioId
+            @RequestParam("titulo") String titulo,
+            @RequestParam("genero") String genero,
+            @RequestParam("tipo") String tipo,
+            @RequestParam("usuarioId") int usuarioId
     ){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("redirect:/explorador");
-        modelAndView.addObject("titulo","");
-        modelAndView.addObject("genero","Terror");
-        modelAndView.addObject("tipo","");
-        modelAndView.addObject("usuarioId",1);
+        modelAndView.addObject("titulo",titulo);
+        modelAndView.addObject("genero",genero);
+        modelAndView.addObject("tipo",tipo);
+        modelAndView.addObject("usuarioId",usuarioId);
         return modelAndView;
     }
 }

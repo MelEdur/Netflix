@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -50,7 +49,7 @@ public class UsuarioController {
             modelAndView.addObject("mensaje", "El correo ingresado ya se encuentra en uso");
         }else {
             modelAndView.setViewName("redirect:/explorador");
-            modelAndView.addObject("Usuario",usuario.get());
+            modelAndView.addObject("usuarioId",usuario.get().getIdUsuario());
         }
         return modelAndView;
     }
@@ -73,8 +72,7 @@ public class UsuarioController {
         try {
             Usuario usuario = usuarioService.login(correo, contrasenia);
             modelAndView.setViewName("redirect:/explorador");
-            modelAndView.addObject("usuario",usuario);
-            modelAndView.addObject("contenidos",new ArrayList<>());
+            modelAndView.addObject("usuarioId",usuario.getIdUsuario());
 
         } catch (Exception e) {
             modelAndView.setViewName("redirect:/login");

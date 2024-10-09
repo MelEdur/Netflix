@@ -18,7 +18,7 @@
         <p>Usuario: <input type="email" th:name="correo" required></p>
         <p>Contraseña: <input type="password" th:name="contrasenia" required></p>
 
-        <button th:onclick="'window.location.href=\'' + @{/seleccionPerfil} + '\''">Iniciar Sesión</button>
+        <button type="submit">Iniciar Sesion</button>
     </form>
 
     <p th:if="${error}" th:text="${error}" style="color: red;"></p>

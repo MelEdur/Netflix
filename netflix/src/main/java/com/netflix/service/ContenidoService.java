@@ -19,7 +19,9 @@ public class ContenidoService {
         //Trae contenido filtrado por género y título de la BD
         List<Contenido> contenidos = contenidoRepository.findByTituloContainingAndGeneroContaining(titulo,genero);
 
-
+        if(tipo == null){
+            tipo = "";
+        }
         //FILTRA POR TIPO DE CONTENIDO
         if(!tipo.isBlank()){
             if(tipo.equals("pelicula")){
