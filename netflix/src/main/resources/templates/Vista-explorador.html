@@ -2,35 +2,46 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Explorador</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/Vista-explorador.css}">
 </head>
 <body>
     <!-- <h1>Bienvenido, <span th:text="${perfil.nombre}"></span></h1> -->
 
     <!-- Buscador -->
     <form action="#" th:action="@{/buscar}" method="post">
-        <input type="text" th:name="titulo" name="busqueda" placeholder="Buscar...">
+        <div class="container">
+            <input type="text" th:name="titulo" name="busqueda" placeholder="Buscar...">
+
+        </div>
+        <div class="container-genero">
+
+
         <p>Seleccione un género
-        <select th:name="genero">
-            <option value="terror">Terror</option>
-            <option value="romance">Romance</option>
-            <option value="accion">Acción</option>
-            <option value="comedia">Comedia</option>
-            <option value="infantil">Infantil</option>
-            <option value="">Todos</option>
-        </select>
+            <select th:name="genero">
+                <option value="">Todos</option>
+                <option value="terror">Terror</option>
+                <option value="romance">Romance</option>
+                <option value="accion">Acción</option>
+                <option value="comedia">Comedia</option>
+                <option value="infantil">Infantil</option>
+
+            </select>
         </p>
+
+
         <select th:name="tipo">
             <option value="">Todos</option>
             <option value="serie">Series</option>
             <option value="pelicula">Peliculas</option>
         </select>
-        <input type="hidden" th:name="usuarioId" th:value="${usuario.idUsuario}">
-        <button type="submit">Buscar</button>
+            <input type="hidden" th:name="usuarioId" th:value="${usuario.idUsuario}">
+            <button type="submit">Buscar</button>
+        </div>
+
     </form>
 
     <!-- Resultados de la búsqueda -->
-     <div>
+     <div class="container-catalogo">
         <ul>
             <li th:each="contenido:${resultados}">
                 <span th:text="${contenido.titulo}"> </span>
@@ -52,9 +63,9 @@
             </li>
         </ul>
      </div>
-   
 
-    <!-- Cambio de perfil 
+
+    <!-- Cambio de perfil
     <button th:onclick="'/seleccionar-perfil'">Cambiar Perfil</button> -->
 </body>
 </html>
