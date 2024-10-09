@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NETFLIX</title>
+    
+</head>
+
+<body>
+    <h2>Selección de perfil</h2>
+    <div class="perfil-container">
+        <div class="perfil-box" th:each="perfil : ${Perfiles}">
+            <button type="button" th:text="${perfil.nombre}" th:onclick="'window.location.href=\'/perfil/'+${perfil.id}" class="perfil-btn"></button>
+        </div>
+        <div class="agregar-perfil">
+            <button type="button"  onclick="window.location.href='/perfil/agregar'" class="agregar-btn">
+                Agregar perfil +
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

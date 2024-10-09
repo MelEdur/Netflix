@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NETFLIX</title>
+</head>
+
+<body>
+    <h2>Crear Usuario</h2>
+
+    <form action="#" th:action="@{/registro}" method="post">
+        <p>Correo Electronico: <input type="email" th:name="correo" required></p>
+        <p>Contraseña: <input type="password" th:name="contrasenia" required></p>
+        <p>Metodo de pago: <input type="text" th:name="tarjeta" required></p>
+
+        <p>Seleccione un Plan:
+        <select th:name="planId">
+            <option th:each="plan : ${Planes}" th:value="${plan.idPlan}" th:text="${plan.nombre}"></option>
+        </select>
+    </p>
+
+        <button type="submit">Crear Cuenta</button>
+    </form>
+
+    <p th:if="${error}" th:text="${error}" style="color: red;"></p>
+</body>
+
+</html>
