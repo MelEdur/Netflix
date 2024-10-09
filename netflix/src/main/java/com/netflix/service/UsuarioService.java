@@ -43,4 +43,19 @@ public class UsuarioService {
     public Usuario traerPorId(int id){
         return usuarioRepository.findById(id).orElseThrow();
     }
+
+    public int actualizarUsuario(int id,String correo,String contrasenia,String tarjeta, Plan plan){
+        Usuario usuario = this.traerPorId(id);
+
+        usuario.setCorreo(correo);
+        usuario.setContrasenia(contrasenia);
+        usuario.setTarjeta(tarjeta);
+        usuario.setPlan(plan);
+
+        return usuarioRepository.save(usuario).getIdUsuario();
+    }
+
+    public void eliminarUsuario(int id){
+        usuarioRepository.deleteById(id);
+    }
 }
