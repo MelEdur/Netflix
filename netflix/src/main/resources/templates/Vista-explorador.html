@@ -56,14 +56,14 @@
                 <span th:text="${contenido.genero}"> </span>
                 <img th:src="${contenido.imagen}" />
                 <div th:if="${contenido instanceof T(com.netflix.entity.Serie)}">
-                    <form action="#" th:action="@{/a}" method="post">
+                    <form action="#" th:action="@{/listaEpisodios}" method="post">
                         <input type="hidden" th:name="idContenido" th:value="${contenido.idContenido}">
                         <input type="hidden" th:name="usuarioId" th:value="${usuario.idUsuario}">
                         <button type="submit">Ver episodios</button>
                     </form>
                 </div>
                 <div th:if="${contenido instanceof T(com.netflix.entity.Pelicula)}">
-                    <form action="#" th:action="@{/a}" method="post">
+                    <form action="#" th:action="@{/reproducirPelicula}" method="post">
                         <input type="hidden" th:name="idContenido" th:value="${contenido.idContenido}">
                         <input type="hidden" th:name="usuarioId" th:value="${usuario.idUsuario}">
                         <button type="submit">Reproducir</button>

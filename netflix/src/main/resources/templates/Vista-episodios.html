@@ -1,0 +1,18 @@
+<div class="container-catalogo">
+    <ul>
+        <li th:each="episodio:${episodios}">
+
+            <img th:src="${episodio.imagen}" />
+            <span th:text="${episodio.titulo}"> </span><br>
+            <span th:text="${episodio.numero}"> </span><br>
+            <span th:text="${episodio.descripcion}"> </span><br>
+            <div>
+                <form action="#" th:action="@{/reproducirEpisodio}" method="post">
+                    <input type="hidden" th:name="idEpisodio" th:value="${episodio.idEpisodio}">
+                    <input type="hidden" th:name="usuarioId" th:value="${usuario.idUsuario}">
+                    <button type="submit">Reproducir</button>
+                </form>
+            </div>
+        </li>
+    </ul>
+</div>
