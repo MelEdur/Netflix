@@ -3,6 +3,11 @@
 <head>
     <title>Explorador</title>
     <link rel="stylesheet" th:href="@{/Vista-explorador.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <body>
     <!-- <h1>Bienvenido, <span th:text="${perfil.nombre}"></span></h1> -->
@@ -10,14 +15,15 @@
     <!-- Buscador -->
     <form action="#" th:action="@{/buscar}" method="post">
         <div class="container">
-            <input type="text" th:name="titulo" name="busqueda" placeholder="Buscar...">
+            <h3>N3TFLIX</h3>
+            <input type="text" th:name="titulo" name="busqueda" placeholder="Buscar">
 
         </div>
         <div class="container-genero">
 
 
         <p>Seleccione un género
-            <select th:name="genero">
+            <select class="custom-select" th:name="genero">
                 <option value="">Todos</option>
                 <option value="terror">Terror</option>
                 <option value="romance">Romance</option>
@@ -29,7 +35,7 @@
         </p>
 
 
-        <select th:name="tipo">
+        <select class="custom-select"  th:name="tipo">
             <option value="">Todos</option>
             <option value="serie">Series</option>
             <option value="pelicula">Peliculas</option>
@@ -44,8 +50,11 @@
      <div class="container-catalogo">
         <ul>
             <li th:each="contenido:${resultados}">
+
+
                 <span th:text="${contenido.titulo}"> </span>
                 <span th:text="${contenido.genero}"> </span>
+                <img th:src="${contenido.imagen}" />
                 <div th:if="${contenido instanceof T(com.netflix.entity.Serie)}">
                     <form action="#" th:action="@{/a}" method="post">
                         <input type="hidden" th:name="idContenido" th:value="${contenido.idContenido}">

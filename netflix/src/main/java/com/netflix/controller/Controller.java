@@ -23,34 +23,42 @@ public class Controller {
         contenidoRepository.save(Pelicula.builder()
                 .titulo("Wall-E")
                 .genero("Infantil")
+                .imagen("/fondo.jpg")
                 .build());
         contenidoRepository.save(Pelicula.builder()
                 .titulo("Los increibles")
                 .genero("Infantil")
+                .imagen("/wally.jpeg")
                 .build());
         contenidoRepository.save(Pelicula.builder()
                 .titulo("Piratas del caribe")
                 .genero("Aventura")
+                .imagen("/static/wally.jpeg")
                 .build());
         contenidoRepository.save(Pelicula.builder()
                 .titulo("El conjuro")
                 .genero("Terror")
+                .imagen("/static/wally.jpeg")
                 .build());
         contenidoRepository.save(Serie.builder()
                 .titulo("Mickey")
                 .genero("Infantil")
+                .imagen("/static/wally.jpeg")
                 .build());
         contenidoRepository.save(Serie.builder()
                 .titulo("Fleabag")
                 .genero("Comedia")
+                .imagen("/static/wally.jpeg")
                 .build());
         contenidoRepository.save(Serie.builder()
                 .titulo("Dexter")
                 .genero("Terror")
+                .imagen("/static/wally.jpeg")
                 .build());
         contenidoRepository.save(Serie.builder()
                 .titulo("Aventura")
                 .genero("Aventura")
+                .imagen("/static/wally.jpeg")
                 .build());
     }
 
