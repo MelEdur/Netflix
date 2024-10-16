@@ -87,6 +87,7 @@ public class UsuarioController {
     public ModelAndView vistaModificar(int usuarioId){
         ModelAndView modelAndView = new ModelAndView("Vista-modificar");
         modelAndView.addObject("usuario",usuarioService.traerPorId(usuarioId));
+        modelAndView.addObject("Planes",planService.traerPlanes());
 
         return modelAndView;
     }
