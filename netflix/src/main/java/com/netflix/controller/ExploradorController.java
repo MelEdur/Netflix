@@ -1,12 +1,10 @@
 package com.netflix.controller;
 
 import com.netflix.entity.Contenido;
-import com.netflix.entity.Usuario;
 import com.netflix.service.ContenidoService;
 import com.netflix.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
