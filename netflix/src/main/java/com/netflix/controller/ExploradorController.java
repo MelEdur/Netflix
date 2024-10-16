@@ -62,6 +62,7 @@ public class ExploradorController {
         modelAndView.addObject("peliculaId",contenidoId);
         modelAndView.addObject("tiempo",usuarioService.traerTiempo(usuarioId,contenidoId));
         modelAndView.addObject("url",contenidoService.traerPelicula(contenidoId).getReproduccion());
+        modelAndView.addObject("descripcion",contenidoService.traerPelicula(contenidoId).getDescripcion());
         return modelAndView;
     }
 
@@ -86,6 +87,7 @@ public class ExploradorController {
         modelAndView.addObject("episodioId",episodioId);
         modelAndView.addObject("tiempo",usuarioService.traerTiempo(usuarioId,contenidoService.traerSeriePorEpisodio(episodioId).getIdContenido(), episodioId));
         modelAndView.addObject("url",contenidoService.traerEpisodio(episodioId).getReproduccion());
+        modelAndView.addObject("descripcion",contenidoService.traerSeriePorEpisodio(episodioId).getDescripcion());
         return modelAndView;
     }
 }
