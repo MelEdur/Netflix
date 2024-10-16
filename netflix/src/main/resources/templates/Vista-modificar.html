@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <link rel="stylesheet" th:href="@{/Vista-modificar.css}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modificar Usuario - NETFLIX</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<h2>MODIFICAR USUARIO</h2>
+
+<form action="#" th:action="@{/modificar}" method="post">
+    <input type="hidden" th:name="usuarioId" th:value="${usuario.idUsuario}">
+
+    <p>Correo Electrónico <input type="email" th:name="correo" th:value="${usuario.correo}" required></p>
+    <p>Contraseña <input type="password" th:name="contrasenia" required></p>
+    <p>Método de pago <input type="text" th:name="tarjeta" th:value="${usuario.tarjeta}" required></p>
+
+    <p>Seleccione un Plan:
+        <select th:name="planId">
+            <option th:each="plan : ${Planes}" th:value="${plan.idPlan}" th:text="${plan.nombre}"
+                    th:selected="${plan.idPlan == usuario.plan.idPlan}"></option>
+        </select>
+    </p>
+
+    <!-- <button type="submit">Modificar</button> -->
+
+    <!-- Botones para modificar, cancelar y eliminar -->
+    <div>
+        <button type="submit">Modificar</button>
+    </div>
+</form>
+<a th:href="@{/baja/{id}(id=${usuario.idUsuario})}">
+    <button type="button">Eliminar Cuenta</button>
+</a>
+<form action="#" th:action="@{/explorador}" method="get">
+    <input type="hidden" th:name="usuarioId" th:value="${usuario.idUsuario}">
+    <button type="submit">Cancelar</button>
+</form>
+
+<p th:if="${error}" th:text="${error}" style="color: red;"></p>
+<!-- Botón para dar de baja al usuario
+<a th:href="@{/baja/{id}(id=${usuario.idUsuario})}">Darse de baja</a> -->
+</body>
+
+</html>
