@@ -10,18 +10,20 @@
 
 </head>
 <body>
-    <form action="#" th:action="@{/modificar}" method="get">
-        <input type="hidden" th:name="usuarioId" th:value="${usuario.idUsuario}">
-        <button type="submit">MI CUENTA</button>
-    </form>
-    <br>
-    <a th:href="@{/}">
-        <button type="submit">CERRAR SESIÓN</button>
-    </a>
+    <div class="container-sesion">
+        <form action="#" th:action="@{/modificar}" method="get">
+            <input type="hidden" th:name="usuarioId" th:value="${usuario.idUsuario}">
+            <button class="button-sesion" type="submit">MI CUENTA</button>
+        </form>
+        <br>
+        <a th:href="@{/}">
+            <button class="button-sesion" type="submit">CERRAR SESIÓN</button>
+        </a>
+    </div>
     <!-- <h1>Bienvenido, <span th:text="${perfil.nombre}"></span></h1> -->
 
     <!-- Buscador -->
-    <form action="#" th:action="@{/buscar}" method="post">
+    <form class="container-form" action="#" th:action="@{/buscar}" method="post">
         <div class="container">
             <h3>N3TFLIX</h3>
             <input type="text" th:name="titulo" name="busqueda" placeholder="Buscar">
