@@ -17,6 +17,11 @@ body::before {
     background-repeat: no-repeat;
     z-index: -2;
 }
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 body::after {
     content: '';
@@ -32,21 +37,33 @@ body::after {
 
 .container{
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    margin-bottom: 80px;
+    width: 90%;
+    border-bottom: 1px solid #ffffff4f;
+    align-items: center;
 
 }
 
 
-.container input{
+.container input {
     height: 30px;
-    width: 300px;
-    margin-right: 40px;
-    border: 1px #f10000 solid;
-    border-radius: 5px;
-    color:white;
-    background: #00000000;
+    width: 100%;
+    max-width: 400px;
+    margin-right: 20px;
+    padding: 0 15px;
+    border: 1px solid #e50914; /* Rojo característico de Netflix */
+    border-radius: 4px;
+    background-color: #333; /* Fondo oscuro */
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
 
+.container input:focus {
+    border-color: #e50914;
+    background-color: #222; /* Fondo más oscuro al hacer focus */
 }
 
 h3{
@@ -54,6 +71,7 @@ h3{
     font-size: 50px;
     color: red;
     margin-left:30px;
+    margin:0;
 }
 
 .container-genero {
