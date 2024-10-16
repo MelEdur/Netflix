@@ -13,8 +13,59 @@
     <div class="video-container" >
         <iframe
            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
-           th:src="${url}+'?enablejsapi=1&rel=0&start='"
+           th:src="${url}+'?enablejsapi=1&rel=0&start='+${tiempo}"
            id="reproductor" ></iframe>
     </div>
     </body>
 </html>
+<script src="https://www.youtube.com/iframe_api"></script>
+
+<script th:inline="javascript">
+    console.log("CARGADO");
+    let player = new YT.Player('reproductor', {
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+    const episodioId = [[${episodioId}]];
+    const usuarioId = [[${usuarioId}]];
+    const peliculaId = [[${peliculaId}]];
+    console.log(episodioId);
+    console.log(usuarioId);
+    console.log(peliculaId);
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('reproductor', {
+            events: {
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    }
+
+    function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PAUSED) {
+            const currentTime = player.getCurrentTime();
+            sendCurrentTime(currentTime);
+        }
+    }
+    function sendCurrentTime(currentTime) {
+    console.log("Voy a enviar");
+        const currentTimeInSeconds = Math.floor(currentTime);
+        fetch('/guardarProgreso', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ time: currentTimeInSeconds, episodio: episodioId, pelicula: peliculaId, usuario: usuarioId })
+        });
+    }
+
+    function onPlayerReady(event) {
+    console.log("Player is ready");
+}
+    window.addEventListener('beforeunload', function(event) {
+    const currentTime = player.getCurrentTime(); // Get current time
+    const currentTimeInSeconds = Math.floor(currentTime); // Convert to integer seconds
+    sendCurrentTime(currentTimeInSeconds); // Send to server
+});
+</script>

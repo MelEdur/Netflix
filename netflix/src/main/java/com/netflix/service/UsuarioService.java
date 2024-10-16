@@ -1,12 +1,15 @@
 package com.netflix.service;
 
+import com.netflix.entity.Perfil;
 import com.netflix.entity.Plan;
+import com.netflix.entity.Progreso;
 import com.netflix.entity.Usuario;
 import com.netflix.repository.IUsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -22,7 +25,12 @@ public class UsuarioService {
             return Optional.of(usuarioRepository.save(Usuario.builder()
                             .correo(correo)
                             .contrasenia(contrasenia)
-                            .perfiles(new ArrayList<>())
+                            .perfiles(List.of(Perfil.builder()
+                                            .nombre("default")
+                                            .kids(false)
+                                            .favoritos(new ArrayList<>())
+                                            .progresos(new ArrayList<>())
+                                    .build()))
                             .tarjeta(tarjeta)
                             .plan(plan)
                     .build()));
@@ -57,5 +65,38 @@ public class UsuarioService {
 
     public void eliminarUsuario(int id){
         usuarioRepository.deleteById(id);
+    }
+
+    public int traerTiempo(int usuarioId, int contenidoId, int episodioId){
+        Usuario usuario = traerPorId(usuarioId);
+
+        Perfil perfil = usuario.getPerfiles().get(0);
+        int tiempo = 0;
+
+        Optional<Progreso> progreso = perfil.getProgresos().stream()
+                .filter(p -> p.getContenido().getIdContenido() == contenidoId && p.getEpisodio() == episodioId)
+                .findFirst();
+
+        if(progreso.isPresent()){
+            tiempo = progreso.get().getSegundo();
+        }
+
+        return tiempo;
+    }
+    public int traerTiempo(int usuarioId, int contenidoId){
+        Usuario usuario = traerPorId(usuarioId);
+
+        Perfil perfil = usuario.getPerfiles().get(0);
+        int tiempo = 0;
+
+        Optional<Progreso> progreso = perfil.getProgresos().stream()
+                .filter(p -> p.getContenido().getIdContenido() == contenidoId)
+                .findFirst();
+
+        if(progreso.isPresent()){
+            tiempo = progreso.get().getSegundo();
+        }
+
+        return tiempo;
     }
 }

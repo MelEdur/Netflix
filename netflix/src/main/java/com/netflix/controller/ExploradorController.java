@@ -1,6 +1,7 @@
 package com.netflix.controller;
 
 import com.netflix.entity.Contenido;
+import com.netflix.entity.Usuario;
 import com.netflix.service.ContenidoService;
 import com.netflix.service.UsuarioService;
 import lombok.RequiredArgsConstructor;
@@ -57,6 +58,9 @@ public class ExploradorController {
             @RequestParam("usuarioId") int usuarioId
     ){
         ModelAndView modelAndView = new ModelAndView("Vista-reproduccion");
+        modelAndView.addObject("usuarioId",usuarioId);
+        modelAndView.addObject("peliculaId",contenidoId);
+        modelAndView.addObject("tiempo",usuarioService.traerTiempo(usuarioId,contenidoId));
         modelAndView.addObject("url",contenidoService.traerPelicula(contenidoId).getReproduccion());
         return modelAndView;
     }
@@ -78,6 +82,9 @@ public class ExploradorController {
             @RequestParam("usuarioId") int usuarioId
     ){
         ModelAndView modelAndView = new ModelAndView("Vista-reproduccion");
+        modelAndView.addObject("usuarioId",usuarioId);
+        modelAndView.addObject("episodioId",episodioId);
+        modelAndView.addObject("tiempo",usuarioService.traerTiempo(usuarioId,contenidoService.traerSeriePorEpisodio(episodioId).getIdContenido(), episodioId));
         modelAndView.addObject("url",contenidoService.traerEpisodio(episodioId).getReproduccion());
         return modelAndView;
     }
