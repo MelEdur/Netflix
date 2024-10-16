@@ -7,6 +7,7 @@ import com.netflix.entity.Serie;
 import com.netflix.repository.IContenidoRepository;
 import com.netflix.repository.IEpisodioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class ContenidoService {
 
     public List<Contenido> traerContenidoPorFiltro(String titulo,String genero,String tipo){
         //Trae contenido filtrado por género y título de la BD
-        List<Contenido> contenidos = contenidoRepository.findByTituloContainingAndGeneroContaining(titulo,genero);
+        List<Contenido> contenidos = contenidoRepository.findByTituloContainingAndGeneroContaining(titulo,genero, Sort.by("titulo"));
 
         if(tipo == null){
             tipo = "";
