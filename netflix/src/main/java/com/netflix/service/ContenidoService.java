@@ -50,4 +50,8 @@ public class ContenidoService {
         return episodioRepository.findById(episodioId).get();
     }
 
+    public Serie traerSeriePorEpisodio(int episodioId){
+        return contenidoRepository.findByEpisodiosIdEpisodio(episodioId);
+    }
+
 }
