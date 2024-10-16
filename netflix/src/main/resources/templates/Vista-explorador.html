@@ -53,7 +53,6 @@
 
 
                 <span th:text="${contenido.titulo}"> </span><br>
-                <span th:text="${contenido.genero}"> </span><br>
                 <img th:src="${contenido.imagen}" /><br>
                 <div th:if="${contenido instanceof T(com.netflix.entity.Serie)}">
                     <form action="#" th:action="@{/listaEpisodios}" method="post">

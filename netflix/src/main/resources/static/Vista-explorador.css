@@ -1,16 +1,33 @@
 html {
-    min-height: 100%; /* Asegura que el html siempre ocupe al menos el 100% del alto de la ventana */
+    min-height: 100%;
     margin: 0;
-    background-image: url('./fondo.jpg');
-    background-size: cover; /* Hace que la imagen ocupe todo el fondo */
-    background-position: center; /* Centra la imagen */
-    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    position: relative;
 }
 
-body {
-    min-height: 100%; /* Asegura que el body ocupe al menos el 100% del alto de la pantalla */
-    margin: 0;
-    background-color: #000000ed; /* Color negro con transparencia */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('./fondo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -2;
+}
+
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0 0 0 / 96%);
+
+    z-index: -1; /* Asegura que la capa oscura quede sobre la imagen pero debajo del contenido */
 }
 
 .container{
